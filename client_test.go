@@ -15,14 +15,14 @@ var testEndpointID string
 
 func TestClient_GetIdentities(t *testing.T) {
 	client := createClient(t)
-	identities, err := client.GetIdentities([]string{"glenn.tarcea@gmail.com"})
+	identities, err := client.GetIdentities([]string{os.Getenv("GLOBUS_TEST_EMAIL_ADDR"})
 	assert.Okf(t, err, "Unable to get identities: %s", err)
 	assert.Truef(t, len(identities.Identities) == 1, "Wrong identities length %d", len(identities.Identities))
 }
 
 func TestACLs(t *testing.T) {
 	client := createClient(t)
-	identities, err := client.GetIdentities([]string{"glenn.tarcea@gmail.com"})
+	identities, err := client.GetIdentities([]string{os.Getenv("GLOBUS_TEST_EMAIL_ADDR"})
 	assert.Okf(t, err, "Unable to get identities: %s", err)
 	userGlobusIdentity := identities.Identities[0].ID
 

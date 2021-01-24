@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/materials-commons/mc/pkg/globusapi"
+    "github.com/materials-commons/goglobus"
 	"github.com/materials-commons/mc/pkg/tutils/assert"
 )
 
@@ -39,7 +39,7 @@ func TestACLs(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		rule := globusapi.EndpointACLRule{
+		rule := globus.EndpointACLRule{
 			PrincipalType: "identity",
 			EndpointID:    testEndpointID,
 			Path:          test.path,
@@ -82,13 +82,13 @@ func TestGetTasks(t *testing.T) {
 	}
 }
 
-func createClient(t *testing.T) *globusapi.Client {
+func createClient(t *testing.T) *globus.Client {
 	globusCCUser := os.Getenv("MC_CONFIDENTIAL_CLIENT_USER")
 	globusCCToken := os.Getenv("MC_CONFIDENTIAL_CLIENT_PW")
 	testEndpointID = os.Getenv("MC_CONFIDENTIAL_CLIENT_ENDPOINT")
 
 	if globusCCUser != "" && globusCCToken != "" && testEndpointID != "" {
-		client, err := globusapi.CreateConfidentialClient(globusCCUser, globusCCToken)
+		client, err := globus.CreateConfidentialClient(globusCCUser, globusCCToken)
 		assert.Okf(t, err, "Unable to create confidential client: %s", err)
 		return client
 	} else {

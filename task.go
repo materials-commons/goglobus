@@ -19,7 +19,7 @@ type TaskExtras struct {
 	SourceLocalUser                    string `json:"source_local_user"`
 	SourceLocalUserStatus              string `json:"source_local_user_status"`
 	DestinationLocalUser               string `json:"destination_local_user"`
-	DestinationLocalUserStatus         string `json:"destination_local_user"`
+	DestinationLocalUserStatus         string `json:"destination_local_user_status"`
 	OwnerString                        string `json:"owner_string"`
 }
 
